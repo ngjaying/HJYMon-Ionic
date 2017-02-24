@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>登录</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="cancel()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div class="logo">
+      <h1>请先登录</h1>
+    </div>
+
+    <form id="loginForm" [formGroup]="myform" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-label floating>用户名(邮箱)</ion-label>
+        <ion-input name="email" type="text" formControlName="email" spellcheck="false" autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <p *ngIf="formErrors.email" ion-text color="danger" padding-left>
+        {{ formErrors.email }}
+      </p>
+
+      <ion-item>
+        <ion-icon name="lock" item-left></ion-icon>
+        <ion-label floating>密码</ion-label>
+        <ion-input name="password" type="password" formControlName="password" required>
+        </ion-input>
+      </ion-item>
+      <p *ngIf="formErrors.password" ion-text color="danger" padding-left>
+        {{ formErrors.password }}
+      </p>
+    </form>
+  </ion-list>
+
+  <ion-row responsive-sm>
+    <ion-col>
+      <button ion-button full [disabled]="!myform.valid || submitted" type="submit" form="loginForm" block>登录</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button full (click)="onSignup()" color="light" block>注册</button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>我的关注列表</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let i of items">
+    <ion-card-content>
+      <ion-card-title>
+        {{i.monitor.url}}
+      </ion-card-title>
+      <p>
+        {{i.monitor.value}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="empty" *ngIf="items && items.length == 0">
+    暂无关注信息
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!allLoaded">
+    <ion-infinite-scroll-content>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-fab right bottom>
+   <button ion-fab color="danger" (click)="addLaunchy()"><ion-icon name="add"></ion-icon></button>
+ </ion-fab>
+</ion-content>
