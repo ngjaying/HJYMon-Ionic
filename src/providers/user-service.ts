@@ -5,12 +5,8 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class UserService extends BaseService {
-  private loggedIn = false;
-
   constructor(@Inject(Injector) private inj: Injector) {
     super(inj);
-    //localStorage.removeItem('hjy_auth_token');
-    this.loggedIn = !!localStorage.getItem('hjy_auth_token');
   }
 
   login(data) {
@@ -26,17 +22,16 @@ export class UserService extends BaseService {
       if (res.token) {
         localStorage.setItem('hjy_auth_token', res.token);
         localStorage.setItem('hjy_uid', res.user.id)
-        this.loggedIn = true;
       }
       return res;
     }).catch(this.handleError);
   }
 
   logout() {
-    this.loggedIn = false;
     return this.http.post(`${this.config.apiEndpoint}/logout`,
       '',{}
     ).map((res) => {
+       localStorage.removeItem('hjy_auth_token');
        return this.handleRes(res);
     }).catch(this.handleError)
     .finally(() => {
@@ -59,7 +54,7 @@ export class UserService extends BaseService {
   }
 
   isLoggedIn() {
-    return this.loggedIn;
+    return !!localStorage.getItem('hjy_auth_token');
   }
 
 }
