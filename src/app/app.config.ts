@@ -13,7 +13,7 @@ export interface IAppConfig {
 
 export const AppConfig: IAppConfig = {
     host: 'http://192.168.31.196',
-    apiEndpoint: 'http://192.168.31.196',
+    apiEndpoint: 'http://192.168.31.196/api',
     articlePageNum: 6,
     httpTimeout: 5000,
     loaderDuration: 5500,

@@ -20,8 +20,8 @@ export class UserService extends BaseService {
       { headers }, {noAuth: true}
     ).map(res => res.json()).map((res) => {
       if (res.token) {
-        localStorage.setItem('hjy_auth_token', res.token);
-        localStorage.setItem('hjy_uid', res.user.id)
+        sessionStorage.setItem('hjy_auth_token', res.token);
+        sessionStorage.setItem('hjy_uid', res.user.id)
       }
       return res;
     }).catch(this.handleError);
@@ -31,11 +31,11 @@ export class UserService extends BaseService {
     return this.http.post(`${this.config.apiEndpoint}/logout`,
       '',{}
     ).map((res) => {
-       localStorage.removeItem('hjy_auth_token');
+       sessionStorage.removeItem('hjy_auth_token');
        return this.handleRes(res);
     }).catch(this.handleError)
     .finally(() => {
-      localStorage.removeItem('hjy_auth_token');
+      sessionStorage.removeItem('hjy_auth_token');
     });
   }
 
@@ -54,7 +54,7 @@ export class UserService extends BaseService {
   }
 
   isLoggedIn() {
-    return !!localStorage.getItem('hjy_auth_token');
+    return !!sessionStorage.getItem('hjy_auth_token');
   }
 
 }

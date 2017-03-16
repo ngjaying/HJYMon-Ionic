@@ -25,6 +25,8 @@ export class HomePage extends InfoPage {
         }
       });
       modal.present();
+    }else{
+      this.doRefresh();
     }
   }
 
