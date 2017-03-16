@@ -34,8 +34,8 @@ export class MyHTTP {
     options.url = url;
     if (!customeOptions.noAuth) {
       options.search = options.search || new URLSearchParams();
-      options.search.append('user', localStorage.getItem('hjy_uid'));
-      options.search.append('access_token', localStorage.getItem('hjy_auth_token'));
+      options.search.append('user', sessionStorage.getItem('hjy_uid'));
+      options.search.append('access_token', sessionStorage.getItem('hjy_auth_token'));
     }
     return this.request(options, customeOptions);
   }
@@ -45,8 +45,8 @@ export class MyHTTP {
     options.url = url;
     if (!customeOptions.noAuth) {
       params = params || new URLSearchParams();
-      params.append('user', localStorage.getItem('hjy_uid'));
-      params.append('access_token', localStorage.getItem('hjy_auth_token'));
+      params.append('user', sessionStorage.getItem('hjy_uid'));
+      params.append('access_token', sessionStorage.getItem('hjy_auth_token'));
     }
     options.body = params.toString();
     return this.request(options, customeOptions);
