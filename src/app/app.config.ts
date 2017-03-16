@@ -17,5 +17,5 @@ export const AppConfig: IAppConfig = {
     articlePageNum: 6,
     httpTimeout: 5000,
     loaderDuration: 5500,
-    accessToken: 'eNjeRdiVNOVDjBf3gXlJRp7skpiV9b11'
+    accessToken: 'jccRRzT2P2UXwibR1DPfGrFJf7UMN5zS'
 };
