@@ -5,12 +5,10 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 
 //providers
-import { ImageManager } from '../providers/image-manager';
 import { UserService } from '../providers/user-service';
 import { LaunchyService } from '../providers/launchy-service';
 import { ResponseCache } from '../providers/response-cache';
 import { MyHTTP } from '../providers/my-http';
-import { QiniuUpload } from '../providers/qiniu-upload';
 
 import { APP_CONFIG, AppConfig } from './app.config';
 

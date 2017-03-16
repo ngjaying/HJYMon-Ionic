@@ -1,5 +1,4 @@
 import { Injectable, Inject, Injector } from '@angular/core';
-import { Headers } from '@angular/http';
 import { BaseService } from './base-service';
 import 'rxjs/Rx';
 
