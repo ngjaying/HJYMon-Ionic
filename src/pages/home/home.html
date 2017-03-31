@@ -11,11 +11,13 @@
       <ion-card-title>
         {{i.blockname}}
       </ion-card-title>
-      <ul *ngIf="i.monitor.value">
-        <li *ngFor="let v of i.monitor.value.split('|')">
-          {{v}}
-        </li>
-      </ul>
+      <a [href]="i.monitor.url" target="_blank">
+        <ul *ngIf="i.monitor.value">
+          <li *ngFor="let v of i.monitor.value.split('|')">
+            {{v}}
+          </li>
+        </ul>
+      </a>
     </ion-card-content>
   </ion-card>
 
