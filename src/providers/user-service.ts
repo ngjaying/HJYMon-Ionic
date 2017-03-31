@@ -21,7 +21,7 @@ export class UserService extends BaseService {
     ).map(res => res.json()).map((res) => {
       if (res.token) {
         sessionStorage.setItem('hjy_auth_token', res.token);
-        sessionStorage.setItem('hjy_uid', res.user.id)
+        sessionStorage.setItem('hjy_uid', res.user.id);
       }
       return res;
     }).catch(this.handleError);
@@ -37,6 +37,17 @@ export class UserService extends BaseService {
     .finally(() => {
       sessionStorage.removeItem('hjy_auth_token');
     });
+  }
+
+  update(id, data) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let urlSearchParams = this.buildParams(['name', 'picture', 'jpushid'], data);
+    return this.http.put(`${this.config.apiEndpoint}/users/${id}`,
+      urlSearchParams,{headers}
+    ).map((res) => {
+       return this.handleRes(res);
+    }).catch(this.handleError);
   }
 
   signup(data){

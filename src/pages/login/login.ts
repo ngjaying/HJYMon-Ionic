@@ -45,6 +45,13 @@ export class LoginPage extends FormPage {
 
   doSubmit() {
     this.userService.login(this.data).subscribe((res) => {
+      let jpushid = sessionStorage.getItem('hjymon.jpushid');
+      if(jpushid){
+        if(!res.user.jpushid || res.user.jpushid != jpushid){
+          console.log('update jpush id');
+          this.userService.update(res.user.id, {jpushid: jpushid}).subscribe(res => console.log(res));
+        }
+      }
       this.successCallback();
       this.viewCtrl.dismiss();
     }, (error) => {

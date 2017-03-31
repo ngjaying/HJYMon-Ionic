@@ -51,6 +51,18 @@ export class MyHTTP {
     options.body = params.toString();
     return this.request(options, customeOptions);
   }
+  
+  put(url, params, options, customeOptions: any = {}) {
+    options.method = RequestMethod.Put;
+    options.url = url;
+    if (!customeOptions.noAuth) {
+      params = params || new URLSearchParams();
+      params.append('user', sessionStorage.getItem('hjy_uid'));
+      params.append('access_token', sessionStorage.getItem('hjy_auth_token'));
+    }
+    options.body = params.toString();
+    return this.request(options, customeOptions);
+  }
 
   delete(url, options, customeOptions = {}) {
     options.method = RequestMethod.Delete;
